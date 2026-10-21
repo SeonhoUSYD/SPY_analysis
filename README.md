@@ -92,3 +92,5 @@ scripts/                        Download, analysis, chart, and backtest code
 ```
 
 No live trading or brokerage connection is configured. Strategy results currently cover development data only.
+
+See [GitHub connection](docs/git_setup.md) for local authentication and push instructions.
