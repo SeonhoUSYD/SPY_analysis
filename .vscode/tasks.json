@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Initial analysis: build visual report",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "args": ["scripts/build_initial_analysis.py"],
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}

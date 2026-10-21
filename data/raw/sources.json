@@ -1,0 +1,36 @@
+{
+  "downloaded_at_utc": "2026-10-21T12:57:36.579662+00:00",
+  "period": [
+    "2007-01-01",
+    "2025-12-31"
+  ],
+  "etf_source_repository": "https://github.com/manisahni/marketdata",
+  "etf_source_commit": "65a079329e379e104495f459e12e76a8f995585a",
+  "etf_source_claim": "Yahoo Finance auto_adjust=True cache; secondary mirror",
+  "files": {
+    "etf_adjusted_close_snapshot.csv": {
+      "url": "https://raw.githubusercontent.com/manisahni/marketdata/65a079329e379e104495f459e12e76a8f995585a/daily_adjclose.csv",
+      "bytes": 1511995,
+      "sha256": "361efb287116fc8200582c15fcd315bcce2e218fa1e50b416bacc5acebff37b9"
+    },
+    "fred_vixcls.csv": {
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=VIXCLS",
+      "bytes": 161646,
+      "sha256": "1f9f2a2887adaf66819e74b02ae9a4f2d76f49400cbda290f0fdc5e2880c4e43"
+    },
+    "fred_dgs3mo.csv": {
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS3MO",
+      "bytes": 186831,
+      "sha256": "6fec26417860c4f07398911c3c3aa7c3b539c74e9b81d7101a36234bcd04fb90"
+    }
+  },
+  "processed": {
+    "path": "data/processed/market_daily.csv",
+    "rows": 4780,
+    "first_date": "2007-01-03",
+    "last_date": "2025-12-31",
+    "missing_vix": 0,
+    "missing_rate": 36,
+    "sha256": "0d386c47dfd4aa3eaff736086ab94cda93775df9d406808441adf2167cbb4f7a"
+  }
+}

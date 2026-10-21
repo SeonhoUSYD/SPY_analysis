@@ -1,0 +1,31 @@
+{
+  "development_start": "2007-01-03",
+  "development_end": "2015-12-31",
+  "development_rows": 2266,
+  "return_rows": 2265,
+  "vix_month_ends": 107,
+  "vix_low_n": 27,
+  "vix_high_n": 27,
+  "vix_low_forward_vol_median_pct": 10.235445502985591,
+  "vix_high_forward_vol_median_pct": 20.708380599511404,
+  "stress_days": 114,
+  "stress_spy_threshold": -0.020473319338332695,
+  "correlations": {
+    "SPY": {
+      "SPY": 1.0,
+      "TLT": -0.45210506729373184,
+      "GLD": 0.05539637554582248
+    },
+    "TLT": {
+      "SPY": -0.45210506729373184,
+      "TLT": 1.0,
+      "GLD": 0.08088554392352343
+    },
+    "GLD": {
+      "SPY": 0.05539637554582248,
+      "TLT": 0.08088554392352343,
+      "GLD": 1.0
+    }
+  },
+  "figure_count": 6
+}

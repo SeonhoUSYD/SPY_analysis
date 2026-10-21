@@ -1,0 +1,5 @@
+* text=auto
+reports/figures/*.png binary
+reports/figures/*.svg linguist-generated=true -whitespace
+reports/initial_analysis.html linguist-generated=true -whitespace
+notebooks/*.ipynb linguist-documentation=true

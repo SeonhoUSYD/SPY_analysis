@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="690" height="320" viewBox="0 0 690 320">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<g font-family="Arial,sans-serif" fill="#17233b">
+<text x="45" y="31" font-size="17" font-weight="bold">Median forward SPY volatility by VIX quartile</text>
+<rect x="170" y="181.3" width="130" height="80.7" fill="#56a3a6"/>
+<text x="235" y="169.3" text-anchor="middle" font-weight="bold">10.2%</text>
+<text x="235" y="284" text-anchor="middle">Bottom VIX quartile</text>
+<text x="235" y="302" text-anchor="middle">n=27 month-ends</text><rect x="390" y="98.8" width="130" height="163.2" fill="#c05c52"/>
+<text x="455" y="86.8" text-anchor="middle" font-weight="bold">20.7%</text>
+<text x="455" y="284" text-anchor="middle">Top VIX quartile</text>
+<text x="455" y="302" text-anchor="middle">n=27 month-ends</text></g><line x1="65" y1="262" x2="625" y2="262" stroke="#8b96a9"/>
+</svg>
