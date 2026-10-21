@@ -31,6 +31,22 @@
       "max_drawdown": -0.07050475481815843,
       "trades": 111,
       "mean_spy_weight": 0.401702768577158
+    },
+    {
+      "strategy": "Monthly SPY 40 / GLD 30 / cash 30",
+      "cagr": 0.11565706716839341,
+      "volatility": 0.09224681963156396,
+      "max_drawdown": -0.15571918412017993,
+      "trades": 96,
+      "mean_spy_weight": 0.40061208636606066
+    },
+    {
+      "strategy": "Monthly SPY 40 / TLT 20 / GLD 20 / cash 20",
+      "cagr": 0.09391677130577625,
+      "volatility": 0.088719882393229,
+      "max_drawdown": -0.1833635150134728,
+      "trades": 96,
+      "mean_spy_weight": 0.4012330733349361
     }
   ],
   "attribution": [
@@ -79,6 +95,28 @@
       "Costs": -0.020372238901230966
     },
     {
+      "period": "2018\u20132025",
+      "strategy": "Monthly SPY 40 / GLD 30 / cash 30",
+      "return": 1.3939445282480958,
+      "within_period_drawdown": -0.15571918412017993,
+      "SPY": 0.6832659343271603,
+      "TLT": 0.0,
+      "GLD": 0.61277501305972,
+      "Cash": 0.0994063562660892,
+      "Costs": -0.0015027754048754227
+    },
+    {
+      "period": "2018\u20132025",
+      "strategy": "Monthly SPY 40 / TLT 20 / GLD 20 / cash 20",
+      "return": 1.046190428107884,
+      "within_period_drawdown": -0.1833635150134728,
+      "SPY": 0.6501589421299485,
+      "TLT": -0.03924582169849961,
+      "GLD": 0.3755564315535378,
+      "Cash": 0.061451677397224506,
+      "Costs": -0.0017308012743346701
+    },
+    {
       "period": "2020",
       "strategy": "Strategy v1",
       "return": 0.24036410043755874,
@@ -121,6 +159,28 @@
       "GLD": 0.0,
       "Cash": 0.002151748961562794,
       "Costs": -0.0010173191480043644
+    },
+    {
+      "period": "2020",
+      "strategy": "Monthly SPY 40 / GLD 30 / cash 30",
+      "return": 0.15869154856983814,
+      "within_period_drawdown": -0.15571918412017993,
+      "SPY": 0.08851392008587546,
+      "TLT": 0.0,
+      "GLD": 0.06918535478161489,
+      "Cash": 0.001135633828019196,
+      "Costs": -0.00014336012567232575
+    },
+    {
+      "period": "2020",
+      "strategy": "Monthly SPY 40 / TLT 20 / GLD 20 / cash 20",
+      "return": 0.1747938009357759,
+      "within_period_drawdown": -0.1383612707968347,
+      "SPY": 0.09206531900246447,
+      "TLT": 0.034665536991682774,
+      "GLD": 0.047493644324428534,
+      "Cash": 0.0007663095052634779,
+      "Costs": -0.00019700888806333197
     },
     {
       "period": "2022",
@@ -167,6 +227,28 @@
       "Costs": -0.0013068240840029951
     },
     {
+      "period": "2022",
+      "strategy": "Monthly SPY 40 / GLD 30 / cash 30",
+      "return": -0.0672486370150186,
+      "within_period_drawdown": -0.13075322698438174,
+      "SPY": -0.07275030251154747,
+      "TLT": 0.0,
+      "GLD": -0.00010684357982210582,
+      "Cash": 0.005730305419675717,
+      "Costs": -0.00012179634332560083
+    },
+    {
+      "period": "2022",
+      "strategy": "Monthly SPY 40 / TLT 20 / GLD 20 / cash 20",
+      "return": -0.13469994322939294,
+      "within_period_drawdown": -0.1825335415801964,
+      "SPY": -0.07135202879801614,
+      "TLT": -0.06657905381017813,
+      "GLD": -0.0002601491254801479,
+      "Cash": 0.0036250304563061444,
+      "Costs": -0.0001337419520247748
+    },
+    {
       "period": "2020 v1 drawdown window 2020-03-09 to 2020-03-18",
       "strategy": "Strategy v1",
       "return": -0.1331685610538187,
@@ -208,6 +290,28 @@
       "TLT": 0.0,
       "GLD": 0.0,
       "Cash": 8.592333083526719e-05,
+      "Costs": -0.0
+    },
+    {
+      "period": "2020 v1 drawdown window 2020-03-09 to 2020-03-18",
+      "strategy": "Monthly SPY 40 / GLD 30 / cash 30",
+      "return": -0.08091662327441751,
+      "within_period_drawdown": -0.09182054243451043,
+      "SPY": -0.045561869545691046,
+      "TLT": 0.0,
+      "GLD": -0.035385249450973065,
+      "Cash": 3.049572224628564e-05,
+      "Costs": -0.0
+    },
+    {
+      "period": "2020 v1 drawdown window 2020-03-09 to 2020-03-18",
+      "strategy": "Monthly SPY 40 / TLT 20 / GLD 20 / cash 20",
+      "return": -0.10335045136295695,
+      "within_period_drawdown": -0.10560803043903388,
+      "SPY": -0.044790141420069485,
+      "TLT": -0.03538970061288828,
+      "GLD": -0.02319059545327505,
+      "Cash": 1.9986123275714325e-05,
       "Costs": -0.0
     },
     {
@@ -253,6 +357,93 @@
       "GLD": 0.0,
       "Cash": 0.009958263665056855,
       "Costs": -0.000859934637506166
+    },
+    {
+      "period": "2022 v1 drawdown window 2022-03-08 to 2022-11-03",
+      "strategy": "Monthly SPY 40 / GLD 30 / cash 30",
+      "return": -0.09852921655241398,
+      "within_period_drawdown": -0.13075322698438174,
+      "SPY": -0.035165895881706016,
+      "TLT": 0.0,
+      "GLD": -0.06708632422173702,
+      "Cash": 0.0037992752934419057,
+      "Costs": -7.627174241353286e-05
+    },
+    {
+      "period": "2022 v1 drawdown window 2022-03-08 to 2022-11-03",
+      "strategy": "Monthly SPY 40 / TLT 20 / GLD 20 / cash 20",
+      "return": -0.13926038919898986,
+      "within_period_drawdown": -0.16479933069576447,
+      "SPY": -0.033971197163003695,
+      "TLT": -0.06337424241044973,
+      "GLD": -0.044304726700087484,
+      "Cash": 0.0024789385137457126,
+      "Costs": -8.916143919485066e-05
+    }
+  ],
+  "static_cost_sensitivity": [
+    {
+      "strategy": "Strategy v1",
+      "bps": 0,
+      "cagr": 0.1465317166407285,
+      "volatility": 0.105097163825561,
+      "max_drawdown": -0.13316856105381858
+    },
+    {
+      "strategy": "Strategy v1",
+      "bps": 5,
+      "cagr": 0.1400050482620745,
+      "volatility": 0.10512346204289624,
+      "max_drawdown": -0.1331685610538187
+    },
+    {
+      "strategy": "Strategy v1",
+      "bps": 20,
+      "cagr": 0.12064469512305553,
+      "volatility": 0.1053022085474104,
+      "max_drawdown": -0.1420446932735978
+    },
+    {
+      "strategy": "Monthly SPY 40 / GLD 30 / cash 30",
+      "bps": 0,
+      "cagr": 0.11582235432045507,
+      "volatility": 0.09224787355641477,
+      "max_drawdown": -0.1557112020031175
+    },
+    {
+      "strategy": "Monthly SPY 40 / GLD 30 / cash 30",
+      "bps": 5,
+      "cagr": 0.11565706716839341,
+      "volatility": 0.09224681963156396,
+      "max_drawdown": -0.15571918412017993
+    },
+    {
+      "strategy": "Monthly SPY 40 / GLD 30 / cash 30",
+      "bps": 20,
+      "cagr": 0.11516142878470248,
+      "volatility": 0.09224374107623312,
+      "max_drawdown": -0.15574312568305437
+    },
+    {
+      "strategy": "Monthly SPY 40 / TLT 20 / GLD 20 / cash 20",
+      "bps": 0,
+      "cagr": 0.09410806314430098,
+      "volatility": 0.08872083267158937,
+      "max_drawdown": -0.18326584116649847
+    },
+    {
+      "strategy": "Monthly SPY 40 / TLT 20 / GLD 20 / cash 20",
+      "bps": 5,
+      "cagr": 0.09391677130577625,
+      "volatility": 0.088719882393229,
+      "max_drawdown": -0.1833635150134728
+    },
+    {
+      "strategy": "Monthly SPY 40 / TLT 20 / GLD 20 / cash 20",
+      "bps": 20,
+      "cagr": 0.09334319833279392,
+      "volatility": 0.08871715379613017,
+      "max_drawdown": -0.183656449019461
     }
   ]
 }

@@ -11,7 +11,7 @@ OUT = ROOT / 'reports'
 rows = load('2025-12-31')
 start = next(i for i, r in enumerate(rows) if r['date'] >= '2018-01-01')
 dates = [r['date'] for r in rows[start:]]
-names = {'v1':'Strategy v1','spy':'SPY buy-and-hold','fixed40':'Monthly SPY 40% / cash 60%','dynamic_cash':'VIX equity rule / cash only'}
+names = {'v1':'Strategy v1','spy':'SPY buy-and-hold','fixed40':'Monthly SPY 40% / cash 60%','dynamic_cash':'VIX equity rule / cash only','gold_cash':'Monthly SPY 40 / GLD 30 / cash 30','balanced40':'Monthly SPY 40 / TLT 20 / GLD 20 / cash 20'}
 results = {mode:run(rows,start,mode,.0005) for mode in names}
 prior = json.loads((OUT/'backtest_v1_summary.json').read_text())
 for mode in ('v1','spy'):
@@ -24,6 +24,11 @@ for r in results.values():
         assert abs(v - previous - sum(pnl) + charge) < 1e-12
         previous = v
 
+sensitivity=[]
+for mode in ('v1','gold_cash','balanced40'):
+    for bps in (0,5,20):
+        r=results[mode] if bps==5 else run(rows,start,mode,bps/10000)
+        sensitivity.append({'strategy':names[mode],'bps':bps,'cagr':r['cagr'],'volatility':r['volatility'],'max_drawdown':r['max_drawdown']})
 figs=[]
 wealth=go.Figure(); ddfig=go.Figure()
 for mode, name in names.items():
@@ -36,6 +41,13 @@ for mode, name in names.items():
 wealth.update_layout(title='2018–2025: net wealth, 5 bp trading costs',yaxis_title='Initial capital = 1')
 ddfig.update_layout(title='2018–2025: drawdown comparison',yaxis_tickformat='.0%')
 figs += [wealth,ddfig]
+costfig=go.Figure()
+for mode in ('v1','gold_cash','balanced40'):
+    selected=[r for r in sensitivity if r['strategy']==names[mode]]
+    assert all(selected[i]['cagr'] >= selected[i+1]['cagr'] for i in range(2))
+    costfig.add_scatter(x=[r['bps'] for r in selected],y=[r['cagr'] for r in selected],mode='lines+markers',name=names[mode])
+costfig.update_layout(title='Static allocations versus v1: cost sensitivity',xaxis_title='Basis points per traded dollar',yaxis_tickformat='.1%')
+figs.append(costfig)
 summary=[]
 for mode,name in names.items():
     r=results[mode]
@@ -105,6 +117,12 @@ GLD contributed +113.10 percentage points to v1's +184.38% cumulative net return
 
 In 2020, v1's calendar return was +24.04%, with GLD contributing +13.08 points. That includes the rebound, so the separate peak-to-trough tables are needed to study crash protection. In 2022, v1 lost 7.70%, worse than the fixed benchmark's -6.08%; its TLT exposure contributed -1.50 points. Defensive assets did not help uniformly. During v1's own 2020-03-09 to 2020-03-18 drawdown, TLT and GLD contributed -7.32 and -4.47 points, respectively. During its 2022-03-08 to 2022-11-03 drawdown, GLD contributed -9.71 points. Gold was a major full-period return source but also a source of substantial interim losses.
 
+## Static allocation extension
+
+At 5 bp, the SPY/GLD/cash fixed portfolio returned 11.57% annualized with 9.22% volatility and a -15.57% maximum drawdown. The four-asset fixed portfolio returned 9.39% with 8.87% volatility and a -18.34% maximum drawdown. V1 returned more than both chosen static portfolios and had a smaller maximum drawdown, but higher volatility. At 20 bp, v1 returned 12.06% versus 11.52% for SPY/GLD/cash: the annualized return gap shrank to about 0.54 percentage points. This comparison does not establish that the dynamic rules outperform all static alternatives.
+
+The two new fixed portfolios retain a 40% SPY target and divide the rest equally between GLD/cash (30% each), or TLT/GLD/cash (20% each). They rebalance monthly. These weights were recorded in docs/static_benchmark_protocol.md before this extension was run; they were not selected through a search. This remains a retrospective exercise because the original final-test and attribution results had already been observed. Consult the cost sensitivity table and chart before interpreting the 5 bp comparison.
+
 ## Scope and methods
 
 This is an explanatory analysis performed after observing the 2018–2025 final test. Benchmarks were added after that observation. Results cannot establish a new independent test or a causal effect. No weights or cutoffs were optimized, and strategy v1 rules are unchanged.
@@ -121,8 +139,9 @@ A 40% SPY benchmark is a simple reference, not an exact exposure or volatility m
 
 Daily asset P&L minus costs reconciles exactly to changes in net wealth. Period contributions reconcile to net returns. Existing v1 and SPY final-test results match the previously published metrics exactly.
 '''
-(OUT/'performance_analysis.md').write_text('# Performance attribution and simple benchmarks\n\n'+head+'\n'+body+'\n\n'+attrhead+'\n'+attrbody+'\n\n'+methods)
-(OUT/'performance_analysis_summary.json').write_text(json.dumps({'comparison':summary,'attribution':attribution},indent=2))
+costtable='\n\n## Static allocation cost sensitivity\n\n| Strategy | Cost (bp) | CAGR | Volatility | Max drawdown |\n|---|---:|---:|---:|---:|\n'+'\n'.join(f"| {r['strategy']} | {r['bps']} | {r['cagr']:.2%} | {r['volatility']:.2%} | {r['max_drawdown']:.2%} |" for r in sensitivity)
+(OUT/'performance_analysis.md').write_text('# Performance attribution and simple benchmarks\n\n'+head+'\n'+body+'\n\n'+attrhead+'\n'+attrbody+costtable+'\n\n'+methods)
+(OUT/'performance_analysis_summary.json').write_text(json.dumps({'comparison':summary,'attribution':attribution,'static_cost_sensitivity':sensitivity},indent=2))
 with (OUT/'performance_attribution.csv').open('w',newline='') as f:
     writer=csv.DictWriter(f,fieldnames=list(attribution[0])); writer.writeheader(); writer.writerows(attribution)
 with (OUT/'performance_daily_pnl.csv').open('w',newline='') as f:
@@ -133,9 +152,9 @@ with (OUT/'performance_daily_pnl.csv').open('w',newline='') as f:
 html=['<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SPY_analysis | Performance attribution</title><style>body{font:16px system-ui;max-width:1150px;margin:32px auto;padding:0 20px;background:#f6f8fb;color:#192a3c}section{background:white;padding:18px;margin:22px 0;border-radius:12px}p{line-height:1.6}table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:9px;border-bottom:1px solid #ddd}</style><h1>Performance attribution and simple benchmarks</h1><p>2018–2025, 5 bp costs. Post-test diagnostics, with unchanged v1 rules. Benchmark choices are retrospective.</p><section style="overflow:auto"><table><tr><th>Strategy</th><th>CAGR</th><th>Volatility</th><th>Max drawdown</th><th>Mean SPY weight</th></tr>']
 for r in summary:
     html.append('<tr><td>'+r['strategy']+'</td>'+''.join(f'<td>{r[k]:.2%}</td>' for k in ('cagr','volatility','max_drawdown','mean_spy_weight'))+'</tr>')
-html.append('</table></section><section><h2>What explains the results?</h2><p>V1 and the fixed benchmark average about 40% equity exposure. The fixed benchmark already reduces maximum drawdown to -14.09%, close to v1 at -13.32%. V1 earns more, but also has higher volatility.</p><p>GLD contributes +113.10 percentage points to v1 cumulative net return of +184.38%. This is an additive P&amp;L decomposition, not an annualized contribution or proof that dynamic selection beats static gold exposure.</p><p>Defensive holdings also lose: in v1’s March 2020 peak-to-trough decline, TLT contributes -7.32 points and GLD -4.47 points. In its March–November 2022 decline, GLD contributes -9.71 points. Full-year returns and peak-to-trough losses answer different questions.</p></section>')
+html.append('</table></section><section><h2>Gold-inclusive static benchmarks</h2><p>At 5 bp, monthly SPY 40% / GLD 30% / cash 30% returns 11.57% annualized with a -15.57% maximum drawdown. Monthly SPY 40% / TLT 20% / GLD 20% / cash 20% returns 9.39% with a -18.34% drawdown. V1 returns more than these two choices but has higher volatility.</p><p>At 20 bp, v1 returns 12.06% versus 11.52% for SPY/GLD/cash. The return gap narrows to about 0.54 percentage points. Weights were not optimized; these are retrospective diagnostics, not a fresh independent test.</p></section><section><h2>What explains the results?</h2><p>V1 and the fixed benchmark average about 40% equity exposure. The fixed benchmark already reduces maximum drawdown to -14.09%, close to v1 at -13.32%. V1 earns more, but also has higher volatility.</p><p>GLD contributes +113.10 percentage points to v1 cumulative net return of +184.38%. This is an additive P&amp;L decomposition, not an annualized contribution or proof that dynamic selection beats static gold exposure.</p><p>Defensive holdings also lose: in v1’s March 2020 peak-to-trough decline, TLT contributes -7.32 points and GLD -4.47 points. In its March–November 2022 decline, GLD contributes -9.71 points. Full-year returns and peak-to-trough losses answer different questions.</p></section>')
 for i,fig in enumerate(figs):
-    fig.update_layout(template='plotly_white',height=500,margin=dict(l=65,r=25,t=65,b=145),legend=dict(orientation='h',y=-.22),hovermode='x unified')
+    fig.update_layout(template='plotly_white',height=580,margin=dict(l=65,r=25,t=65,b=210),legend=dict(orientation='h',y=-.22),hovermode='x unified')
     html.append('<section>'+fig.to_html(full_html=False,include_plotlyjs=True if i==0 else False,config={'displaylogo':False,'responsive':True,'modeBarButtons':[['toImage'],['zoom2d','pan2d'],['zoomIn2d','zoomOut2d','autoScale2d','resetScale2d']]})+'</section>')
 html.append('<section><h2>Reading the attribution</h2><p>Asset dollar P&amp;L divided by period-start capital, plus negative trading charges, sums to net cumulative return. This is an accounting decomposition, not a causal estimate. Calendar-year charts begin at the previous year-end. The fixed benchmark is not an exact risk match; the cash-only variant changes no-trade decisions as well as defensive holdings.</p><p>See performance_analysis.md for the full accounting definitions and tables. This final-test period has already been observed.</p></section></html>')
 (OUT/'performance_analysis.html').write_text('\n'.join(html))

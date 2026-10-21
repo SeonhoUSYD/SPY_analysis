@@ -102,3 +102,5 @@ Run `.venv/bin/python scripts/build_backtest_report.py` after installing the vis
 ## Performance attribution and simple benchmarks
 
 Run `.venv/bin/python scripts/analyze_performance.py` to reproduce [the accounting analysis](reports/performance_analysis.md) and [interactive charts](reports/performance_analysis.html). This retrospective diagnostic compares v1 with monthly SPY 40% / cash 60% and a VIX-equity/cash-only variant, and reconciles asset P&L with net returns. The underlying v1 results remain unchanged.
+
+The attribution report also includes two monthly gold-inclusive static allocations and 0/5/20 bp cost scenarios. Their definitions and retrospective evaluation limits are recorded in [the static benchmark protocol](docs/static_benchmark_protocol.md).

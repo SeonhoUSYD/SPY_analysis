@@ -133,6 +133,8 @@ def run(rows: list[dict], start: int, mode: str, cost_rate: float) -> dict:
                 decisions[regime] += 1
                 if sum(abs(target[i] - weights[i]) for i in range(3)) >= .10:
                     pending = target
+        elif mode in ("gold_cash", "balanced40") and (t == start or rows[t]["date"][:7] != rows[t-1]["date"][:7]):
+            rebalance([.4, 0.0, .3, .3] if mode == "gold_cash" else [.4, .2, .2, .2])
         elif mode == "fixed40" and (t == start or rows[t]["date"][:7] != rows[t-1]["date"][:7]):
             rebalance([.4, 0.0, 0.0, .6])
         elif mode == "spy" and t == start:
