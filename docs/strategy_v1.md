@@ -27,7 +27,7 @@ The numeric cutoffs below are initial experimental choices. They were not estima
 
 Use the same initial capital, dates, and execution assumptions for strategy v1, SPY buy-and-hold, and monthly equal-weight ETF rebalancing. Apply transaction costs to both ETF purchases and sales, with scenarios of 0, 5, and 20 basis points per traded dollar. Approximate cash accrual with the available lagged DGS3MO rate divided by 100 and 252.
 
-Use 2007-2015 for development and accounting checks, 2016-2017 for validation, and reserve 2018-2025 for final out-of-sample evaluation. Report returns, volatility, drawdowns, rebalance events, weight changes, and accumulated charges together. A rebalance event can contain several individual ETF orders.
+Use 2007-2015 for development and accounting checks, 2016-2017 for validation, and 2018-2025 for final out-of-sample evaluation. The final test has now been executed using unchanged v1 rules. Report returns, volatility, drawdowns, rebalance events, weight changes, and accumulated charges together. A rebalance event can contain several individual ETF orders.
 
 ## Questions the experiment can answer
 
@@ -42,4 +42,4 @@ The initial development-only run produced substantial allocation changes and was
 
 ## Frozen validation run
 
-The unchanged allocation rules were evaluated on 2016–2017 after the development accounting check. See [the full backtest protocol and results](../reports/backtest_v1.md). Each evaluation period resets capital, so its initial close allocation uses the preceding session signal as an explicitly documented boundary exception. Transaction charges are solved against post-cost target holdings. The 2018–2025 final test remains reserved.
+The unchanged allocation rules were evaluated on 2016–2017 after the development accounting check. See [the full backtest protocol and results](../reports/backtest_v1.md). Each evaluation period resets capital, so its initial close allocation uses the preceding session signal as an explicitly documented boundary exception. Transaction charges are solved against post-cost target holdings. The authorized 2018–2025 final test was subsequently run with unchanged v1 rules. It is now observed; future rule revisions cannot treat these dates as an unseen test.

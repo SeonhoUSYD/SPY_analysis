@@ -97,4 +97,4 @@ See [GitHub connection](docs/git_setup.md) for local authentication and push ins
 
 ## Frozen strategy backtest
 
-Run `.venv/bin/python scripts/build_backtest_report.py` after installing the visualization requirements. Read [the protocol and results](reports/backtest_v1.md), open [the interactive charts](reports/backtest_v1.html), or inspect [daily holdings and wealth](reports/backtest_v1_paths.csv). This run includes development and 2016–2017 validation only; 2018–2025 remains reserved.
+Run `.venv/bin/python scripts/build_backtest_report.py` after installing the visualization requirements. Read [the protocol and results](reports/backtest_v1.md), open [the interactive charts](reports/backtest_v1.html), or inspect [daily holdings and wealth](reports/backtest_v1_paths.csv). This run includes development, 2016–2017 validation, and the authorized 2018–2025 final test with unchanged strategy v1 rules. The final test is now observed and is no longer an unseen sample for future strategy revisions.

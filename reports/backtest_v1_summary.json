@@ -376,5 +376,194 @@
     "period": "Validation",
     "strategy": "Monthly equal weight",
     "bps": 20
+  },
+  {
+    "final": 2.9762857926470345,
+    "cagr": 0.1465317166407285,
+    "volatility": 0.105097163825561,
+    "max_drawdown": -0.13316856105381858,
+    "trades": 159,
+    "turnover": 91.06632086228831,
+    "cost_fraction_initial": 0.0,
+    "decisions": {
+      "low": 141,
+      "mid": 123,
+      "high": 140
+    },
+    "dates": [
+      "2018-01-02",
+      "2025-12-31"
+    ],
+    "period": "Final test",
+    "strategy": "Strategy v1",
+    "bps": 0
+  },
+  {
+    "final": 2.8747734656956516,
+    "cagr": 0.14155429981075263,
+    "volatility": 0.19459527303146631,
+    "max_drawdown": -0.3371727431876228,
+    "trades": 1,
+    "turnover": 1.0,
+    "cost_fraction_initial": 0.0,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2018-01-02",
+      "2025-12-31"
+    ],
+    "period": "Final test",
+    "strategy": "SPY buy-and-hold",
+    "bps": 0
+  },
+  {
+    "final": 2.0998072653430486,
+    "cagr": 0.09746996989375356,
+    "volatility": 0.10149919224159347,
+    "max_drawdown": -0.22949627677307405,
+    "trades": 96,
+    "turnover": 3.4474667386068623,
+    "cost_fraction_initial": 0.0,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2018-01-02",
+      "2025-12-31"
+    ],
+    "period": "Final test",
+    "strategy": "Monthly equal weight",
+    "bps": 0
+  },
+  {
+    "final": 2.8438014606449067,
+    "cagr": 0.1400050482620745,
+    "volatility": 0.10512346204289624,
+    "max_drawdown": -0.1331685610538187,
+    "trades": 159,
+    "turnover": 91.06632086228831,
+    "cost_fraction_initial": 0.07135971584859557,
+    "decisions": {
+      "low": 141,
+      "mid": 123,
+      "high": 140
+    },
+    "dates": [
+      "2018-01-02",
+      "2025-12-31"
+    ],
+    "period": "Final test",
+    "strategy": "Strategy v1",
+    "bps": 5
+  },
+  {
+    "final": 2.8733367972970125,
+    "cagr": 0.14148275981629688,
+    "volatility": 0.1945952730314663,
+    "max_drawdown": -0.3371727431876226,
+    "trades": 1,
+    "turnover": 1.0,
+    "cost_fraction_initial": 0.0004997501249375258,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2018-01-02",
+      "2025-12-31"
+    ],
+    "period": "Final test",
+    "strategy": "SPY buy-and-hold",
+    "bps": 5
+  },
+  {
+    "final": 2.0961911328339746,
+    "cagr": 0.09723283834862695,
+    "volatility": 0.10149731993883329,
+    "max_drawdown": -0.22960831377667534,
+    "trades": 96,
+    "turnover": 3.4474667386068623,
+    "cost_fraction_initial": 0.0021707223181599566,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2018-01-02",
+      "2025-12-31"
+    ],
+    "period": "Final test",
+    "strategy": "Monthly equal weight",
+    "bps": 5
+  },
+  {
+    "final": 2.480651232439989,
+    "cagr": 0.12064469512305553,
+    "volatility": 0.1053022085474104,
+    "max_drawdown": -0.1420446932735978,
+    "trades": 159,
+    "turnover": 91.06632086228831,
+    "cost_fraction_initial": 0.26377355073847386,
+    "decisions": {
+      "low": 141,
+      "mid": 123,
+      "high": 140
+    },
+    "dates": [
+      "2018-01-02",
+      "2025-12-31"
+    ],
+    "period": "Final test",
+    "strategy": "Strategy v1",
+    "bps": 20
+  },
+  {
+    "final": 2.8690353949058567,
+    "cagr": 0.14126838100123917,
+    "volatility": 0.19459527303146626,
+    "max_drawdown": -0.3371727431876227,
+    "trades": 1,
+    "turnover": 1.0,
+    "cost_fraction_initial": 0.001996007984031989,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2018-01-02",
+      "2025-12-31"
+    ],
+    "period": "Final test",
+    "strategy": "SPY buy-and-hold",
+    "bps": 20
+  },
+  {
+    "final": 2.0853831247196717,
+    "cagr": 0.09652195332288449,
+    "volatility": 0.10149185937479019,
+    "max_drawdown": -0.22994433157867067,
+    "trades": 96,
+    "turnover": 3.4474667386068623,
+    "cost_fraction_initial": 0.008656427341072526,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2018-01-02",
+      "2025-12-31"
+    ],
+    "period": "Final test",
+    "strategy": "Monthly equal weight",
+    "bps": 20
   }
 ]
