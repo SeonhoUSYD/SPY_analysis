@@ -4,6 +4,7 @@ import csv
 import json
 import plotly.graph_objects as go
 from backtest_strategy_v1 import load, run, signal
+from report_findings import backtest_findings
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'reports'
@@ -71,11 +72,7 @@ for fig in figs:
 
 header = '| Period | Cost (bp) | Strategy | CAGR | Volatility | Max drawdown | Rebalances | Costs / initial capital |\n|---|---:|---|---:|---:|---:|---:|---:|'
 table = '\n'.join(f"| {r['period']} | {r['bps']} | {r['strategy']} | {r['cagr']:.2%} | {r['volatility']:.2%} | {r['max_drawdown']:.2%} | {r['trades']} | {r['cost_fraction_initial']:.4f} |" for r in results)
-notes = '''## Final-test findings
-
-At 5 bp per traded dollar, v1 returned 14.00% annualized versus 14.15% for SPY, with maximum drawdowns of -13.32% and -33.72%, respectively. V1 volatility was 10.51% versus 19.46% for SPY. At 20 bp, v1 annualized return fell to 12.06% versus 14.13% for SPY. These observations support a historical reduction in portfolio risk, not a claim of return superiority. The small return difference is sensitive to execution and data assumptions.
-
-## Protocol and interpretation
+notes = '## Final-test findings\n\n' + backtest_findings(results) + '\n\n' + '''## Protocol and interpretation
 
 - Strategy v1 allocation rules remained unchanged after validation and before the authorized final test; no parameter search was performed. Development: 2008-01-07 to 2015-12-31. Validation: the first trading session of 2016 through the last trading session of 2017. Final test: 2018-01-02 through 2025-12-31. The final test is now observed and cannot be reused as an unseen sample for later rule changes.
 - Each period starts from capital of 1 in cash, with an initial strategy allocation executed at the first evaluation close using the preceding session's signal. Subsequent strategy decisions occur on trading Fridays and execute at the next session close. The initial allocation is a period-boundary exception to the Friday schedule. Holdings earn returns only after execution.

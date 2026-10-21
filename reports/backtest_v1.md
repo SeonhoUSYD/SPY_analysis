@@ -32,7 +32,7 @@
 
 ## Final-test findings
 
-At 5 bp per traded dollar, v1 returned 14.00% annualized versus 14.15% for SPY, with maximum drawdowns of -13.32% and -33.72%, respectively. V1 volatility was 10.51% versus 19.46% for SPY. At 20 bp, v1 annualized return fell to 12.06% versus 14.13% for SPY. These observations support a historical reduction in portfolio risk, not a claim of return superiority. The small return difference is sensitive to execution and data assumptions.
+At 5 bp per traded dollar, v1 returned 14.00% annualized versus 14.15% for SPY, with maximum drawdowns of -13.32% and -33.72%. Annualized volatility was 10.51% versus 19.46%. At 20 bp, the respective annualized returns were 12.06% and 14.13%. These are historical comparisons; execution and data assumptions affect their interpretation.
 
 ## Protocol and interpretation
 

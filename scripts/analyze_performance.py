@@ -1,10 +1,12 @@
 """Post-test attribution and transparent benchmark diagnostics; no optimization."""
+import html as html_lib
 import csv
 import json
 from pathlib import Path
 import statistics
 import plotly.graph_objects as go
 from backtest_strategy_v1 import load, run
+from report_findings import performance_findings
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'reports'
@@ -109,21 +111,8 @@ head='| Strategy | CAGR | Volatility | Max drawdown | Mean SPY weight | Rebalanc
 body='\n'.join(f"| {r['strategy']} | {r['cagr']:.2%} | {r['volatility']:.2%} | {r['max_drawdown']:.2%} | {r['mean_spy_weight']:.2%} | {r['trades']} |" for r in summary)
 attrhead='| Period | Strategy | Return | SPY | TLT | GLD | Cash | Costs | Within-period max drawdown |\n|---|---|---:|---:|---:|---:|---:|---:|---:|'
 attrbody='\n'.join('| '+r['period']+' | '+r['strategy']+' | '+' | '.join(f"{r[k]:.2%}" for k in ('return','SPY','TLT','GLD','Cash','Costs','within_period_drawdown'))+' |' for r in attribution)
-methods='''## Findings
-
-V1 and the monthly 40% SPY benchmark have similar mean equity weights (40.14% and 40.12%), but their returns and volatility differ substantially. V1's 14.00% CAGR exceeds the fixed benchmark's 7.52%, while volatility is higher (10.51% versus 7.59%). Their maximum drawdowns are close (-13.32% versus -14.09%). Thus reduced equity exposure already explains much of the drawdown improvement relative to 100% SPY; it does not by itself explain v1's higher return than the fixed benchmark.
-
-GLD contributed +113.10 percentage points to v1's +184.38% cumulative net return; SPY contributed +81.65 points and TLT -6.54 points. This accounting result identifies gold exposure as a major source of realized gains, without proving that the eligibility rule adds value over a static gold allocation. The cash-only VIX variant returned 7.74% annualized with a -7.05% maximum drawdown; timing and defensive allocation should not be credited as one inseparable effect.
-
-In 2020, v1's calendar return was +24.04%, with GLD contributing +13.08 points. That includes the rebound, so the separate peak-to-trough tables are needed to study crash protection. In 2022, v1 lost 7.70%, worse than the fixed benchmark's -6.08%; its TLT exposure contributed -1.50 points. Defensive assets did not help uniformly. During v1's own 2020-03-09 to 2020-03-18 drawdown, TLT and GLD contributed -7.32 and -4.47 points, respectively. During its 2022-03-08 to 2022-11-03 drawdown, GLD contributed -9.71 points. Gold was a major full-period return source but also a source of substantial interim losses.
-
-## Static allocation extension
-
-At 5 bp, the SPY/GLD/cash fixed portfolio returned 11.57% annualized with 9.22% volatility and a -15.57% maximum drawdown. The four-asset fixed portfolio returned 9.39% with 8.87% volatility and a -18.34% maximum drawdown. V1 returned more than both chosen static portfolios and had a smaller maximum drawdown, but higher volatility. At 20 bp, v1 returned 12.06% versus 11.52% for SPY/GLD/cash: the annualized return gap shrank to about 0.54 percentage points. This comparison does not establish that the dynamic rules outperform all static alternatives.
-
-The two new fixed portfolios retain a 40% SPY target and divide the rest equally between GLD/cash (30% each), or TLT/GLD/cash (20% each). They rebalance monthly. These weights were recorded in docs/static_benchmark_protocol.md before this extension was run; they were not selected through a search. This remains a retrospective exercise because the original final-test and attribution results had already been observed. Consult the cost sensitivity table and chart before interpreting the 5 bp comparison.
-
-## Scope and methods
+findings = performance_findings(summary, attribution, sensitivity)
+methods = '## Findings\n\n' + '\n\n'.join(findings) + '\n\n' + '''## Scope and methods
 
 This is an explanatory analysis performed after observing the 2018–2025 final test. Benchmarks were added after that observation. Results cannot establish a new independent test or a causal effect. No weights or cutoffs were optimized, and strategy v1 rules are unchanged.
 
@@ -152,7 +141,7 @@ with (OUT/'performance_daily_pnl.csv').open('w',newline='') as f:
 html=['<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SPY_analysis | Performance attribution</title><style>body{font:16px system-ui;max-width:1150px;margin:32px auto;padding:0 20px;background:#f6f8fb;color:#192a3c}section{background:white;padding:18px;margin:22px 0;border-radius:12px}p{line-height:1.6}table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:9px;border-bottom:1px solid #ddd}</style><h1>Performance attribution and simple benchmarks</h1><p>2018–2025, 5 bp costs. Post-test diagnostics, with unchanged v1 rules. Benchmark choices are retrospective.</p><section style="overflow:auto"><table><tr><th>Strategy</th><th>CAGR</th><th>Volatility</th><th>Max drawdown</th><th>Mean SPY weight</th></tr>']
 for r in summary:
     html.append('<tr><td>'+r['strategy']+'</td>'+''.join(f'<td>{r[k]:.2%}</td>' for k in ('cagr','volatility','max_drawdown','mean_spy_weight'))+'</tr>')
-html.append('</table></section><section><h2>Gold-inclusive static benchmarks</h2><p>At 5 bp, monthly SPY 40% / GLD 30% / cash 30% returns 11.57% annualized with a -15.57% maximum drawdown. Monthly SPY 40% / TLT 20% / GLD 20% / cash 20% returns 9.39% with a -18.34% drawdown. V1 returns more than these two choices but has higher volatility.</p><p>At 20 bp, v1 returns 12.06% versus 11.52% for SPY/GLD/cash. The return gap narrows to about 0.54 percentage points. Weights were not optimized; these are retrospective diagnostics, not a fresh independent test.</p></section><section><h2>What explains the results?</h2><p>V1 and the fixed benchmark average about 40% equity exposure. The fixed benchmark already reduces maximum drawdown to -14.09%, close to v1 at -13.32%. V1 earns more, but also has higher volatility.</p><p>GLD contributes +113.10 percentage points to v1 cumulative net return of +184.38%. This is an additive P&amp;L decomposition, not an annualized contribution or proof that dynamic selection beats static gold exposure.</p><p>Defensive holdings also lose: in v1’s March 2020 peak-to-trough decline, TLT contributes -7.32 points and GLD -4.47 points. In its March–November 2022 decline, GLD contributes -9.71 points. Full-year returns and peak-to-trough losses answer different questions.</p></section>')
+html.append('</table></section><section><h2>Findings</h2>' + ''.join('<p>' + html_lib.escape(p) + '</p>' for p in findings) + '</section>')
 for i,fig in enumerate(figs):
     fig.update_layout(template='plotly_white',height=580,margin=dict(l=65,r=25,t=65,b=210),legend=dict(orientation='h',y=-.22),hovermode='x unified')
     html.append('<section>'+fig.to_html(full_html=False,include_plotlyjs=True if i==0 else False,config={'displaylogo':False,'responsive':True,'modeBarButtons':[['toImage'],['zoom2d','pan2d'],['zoomIn2d','zoomOut2d','autoScale2d','resetScale2d']]})+'</section>')

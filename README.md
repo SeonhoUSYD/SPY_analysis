@@ -2,7 +2,22 @@
 
 An ETF allocation research project using SPY, TLT, GLD, VIX, and a short-term Treasury-rate proxy. The initial analysis asks how risk and diversification relationships change before defining a testable allocation rule.
 
-**Development analysis:** 2007-01-03 through 2015-12-31, 2,266 sessions. Data from 2016 onward are reserved for later evaluation. The charts below describe assets; they do not show an AI strategy or prove outperformance.
+**Development analysis:** 2007-01-03 through 2015-12-31, 2,266 sessions. These initial charts exclude data from 2016 onward; validation and final testing have since been completed. The charts below describe assets; they do not show an AI strategy or prove outperformance.
+
+
+## Final reviewed report
+
+Start with [the final research report](reports/final_report.md), or open [the self-contained HTML report](reports/final_report.html) locally. The report combines the strategy specification, final-test results, benchmark comparisons, asset P&L, cost scenarios, and review limitations. The HTML includes exportable report figures and links to the interactive appendices.
+
+The review fixed stale evaluation status and hardcoded narrative numbers, added input and snapshot-integrity checks, and preserved the published backtest metrics. [Eight focused tests and the rebuild checks passed](reports/review_checks.json). A full independent ETF-price cross-check and an extra execution-delay experiment remain unperformed; this is a historical research prototype.
+
+Rebuild the complete project after installing dependencies:
+
+```bash
+.venv/bin/python scripts/rebuild_project.py
+```
+
+Open `reports/final_report.html` directly, or serve the reports with `python3 -m http.server 8765 --bind 127.0.0.1 --directory reports` and visit `http://127.0.0.1:8765/final_report.html`.
 
 ## View the initial analysis
 
@@ -73,11 +88,11 @@ On Windows, use `.venv\Scripts\python.exe` instead of `.venv/bin/python`. VS Cod
 
 ETF adjusted closes are retrieved from a [pinned secondary mirror of a Yahoo Finance cache](https://github.com/manisahni/marketdata/tree/65a079329e379e104495f459e12e76a8f995585a). VIX and rate observations are downloaded from [FRED VIXCLS](https://fred.stlouisfed.org/series/VIXCLS) and [FRED DGS3MO](https://fred.stlouisfed.org/series/DGS3MO).
 
-Downloaded CSV files remain in the local data directories and are excluded from Git. Run the download script to reconstruct them. Source URLs, snapshot hashes, and coverage are recorded in [the data manifest](data/raw/sources.json). The report uses the locally saved snapshot and does not require an API call when viewing results.
+Downloaded CSV files remain in the local data directories and are excluded from Git. The download script verifies and reuses the recorded snapshot. A fresh clone downloads missing files only if they match the tracked hashes; mutable FRED endpoints may no longer reproduce the exact original bytes. Use `--refresh` only to deliberately adopt a new snapshot and rebuild the research results. Source URLs, snapshot hashes, and coverage are recorded in [the data manifest](data/raw/sources.json). The report uses the locally saved snapshot and does not require an API call when viewing results.
 
 `data/processed/market_daily.csv` contains date, three ETF adjusted closes, contemporaneous VIX/rate observations, and lagged VIX/rate inputs. Missing current Treasury-rate observations remain missing; lagged inputs carry the most recent prior observation. The first row has no lagged input.
 
-Adjusted prices are return-analysis proxies rather than historical executable prices. A small number of source spot checks do not validate the entire ETF history. Full source cross-checking remains a requirement before final evaluation.
+Adjusted prices are return-analysis proxies rather than historical executable prices. A small number of source spot checks do not validate the entire ETF history. Full independent source cross-checking remains incomplete; the completed historical results are conditional on this dataset.
 
 ## Repository structure
 
@@ -91,7 +106,7 @@ reports/figures/                 Exportable PNG and SVG charts
 scripts/                        Download, analysis, chart, and backtest code
 ```
 
-No live trading or brokerage connection is configured. Strategy results currently cover development data only.
+No live trading or brokerage connection is configured. Strategy results cover development, validation, and the now-observed 2018–2025 final sample.
 
 See [GitHub connection](docs/git_setup.md) for local authentication and push instructions.
 

@@ -28,4 +28,4 @@
 
 Strategy v1 makes substantial allocation changes and is sensitive to transaction costs in this development sample. The next design question is whether fewer trades retain useful risk control. This table does not establish superiority. Data from 2016 onward are excluded from this calculation.
 
-Any rule changes after seeing this table are development-stage fitting. Record revisions separately from `docs/strategy_v1.md` and keep the final test sample reserved.
+Any rule changes after seeing this table are development-stage fitting. Record revisions separately from `docs/strategy_v1.md` and treat the already observed final-test sample as retrospective for future revisions.

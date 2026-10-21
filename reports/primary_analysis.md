@@ -4,7 +4,7 @@
 
 Do changing risk levels and asset relationships justify testing a VIX-informed allocation across SPY, TLT, GLD, and cash?
 
-The development sample covers **2007-01-03 to 2015-12-31, 2,266 sessions**. Data from 2016 onward are reserved for validation and testing. These descriptive results do not establish strategy outperformance.
+The development sample covers **2007-01-03 to 2015-12-31, 2,266 sessions**. Data from 2016 onward are excluded from these initial calculations. The completed validation and final test are documented in the final report. These descriptive results do not establish strategy outperformance.
 
 ## Data and methods
 
@@ -53,6 +53,6 @@ This supports testing VIX as a risk input. It does not establish return-directio
 
 ## Limitations and viewing
 
-The ETF mirror needs broader independent cross-checks before final strategy evaluation. The development window includes the financial crisis, and its relationships may not persist. VIX is an implied-risk measure; DGS3MO is a cash-return proxy. These plots contain asset observations, not a backtested trading policy. The separate strategy report is an in-sample prototype check.
+Broader independent cross-checking of the ETF mirror remains incomplete; the completed strategy results are conditional on this data source. The development window includes the financial crisis, and its relationships may not persist. VIX is an implied-risk measure; DGS3MO is a cash-return proxy. These plots contain asset observations, not a backtested trading policy. See final_report.md for the completed study and its review limitations.
 
 Open `reports/initial_analysis.html` for interactive charts or `notebooks/initial_analysis.ipynb` for saved chart outputs. Rebuild visual assets with `.venv/bin/python scripts/build_initial_analysis.py`.

@@ -58,17 +58,13 @@
 
 ## Findings
 
-V1 and the monthly 40% SPY benchmark have similar mean equity weights (40.14% and 40.12%), but their returns and volatility differ substantially. V1's 14.00% CAGR exceeds the fixed benchmark's 7.52%, while volatility is higher (10.51% versus 7.59%). Their maximum drawdowns are close (-13.32% versus -14.09%). Thus reduced equity exposure already explains much of the drawdown improvement relative to 100% SPY; it does not by itself explain v1's higher return than the fixed benchmark.
+V1 and the monthly 40% SPY benchmark have mean equity weights of 40.14% and 40.12%. Their annualized returns are 14.00% and 7.52%, volatility 10.51% and 7.59%, and maximum drawdowns -13.32% and -14.09%. The fixed benchmark provides a direct check on how much drawdown reduction is available from lower equity exposure alone. It is not a causal decomposition of v1.
 
-GLD contributed +113.10 percentage points to v1's +184.38% cumulative net return; SPY contributed +81.65 points and TLT -6.54 points. This accounting result identifies gold exposure as a major source of realized gains, without proving that the eligibility rule adds value over a static gold allocation. The cash-only VIX variant returned 7.74% annualized with a -7.05% maximum drawdown; timing and defensive allocation should not be credited as one inseparable effect.
+GLD contributed +113.10 percentage points to v1's +184.38% cumulative net return; SPY contributed +81.65 points, TLT -6.54, cash +3.31, and charges -7.14. These contributions add to the cumulative return, not CAGR. The cash-only VIX variant returned 7.74% annualized with a -7.05% maximum drawdown.
 
-In 2020, v1's calendar return was +24.04%, with GLD contributing +13.08 points. That includes the rebound, so the separate peak-to-trough tables are needed to study crash protection. In 2022, v1 lost 7.70%, worse than the fixed benchmark's -6.08%; its TLT exposure contributed -1.50 points. Defensive assets did not help uniformly. During v1's own 2020-03-09 to 2020-03-18 drawdown, TLT and GLD contributed -7.32 and -4.47 points, respectively. During its 2022-03-08 to 2022-11-03 drawdown, GLD contributed -9.71 points. Gold was a major full-period return source but also a source of substantial interim losses.
+In 2020, v1's calendar return was +24.04%, including +13.08 points from GLD. In 2022, v1 returned -7.70%, versus -6.08% for the fixed equity/cash benchmark. During the retrospectively selected 2020 v1 drawdown window 2020-03-09 to 2020-03-18, TLT and GLD contributed -7.32 and -4.47 points. During the 2022 v1 drawdown window 2022-03-08 to 2022-11-03, GLD contributed -9.71 points. Full-year returns include recoveries and should not be used to describe peak-to-trough protection.
 
-## Static allocation extension
-
-At 5 bp, the SPY/GLD/cash fixed portfolio returned 11.57% annualized with 9.22% volatility and a -15.57% maximum drawdown. The four-asset fixed portfolio returned 9.39% with 8.87% volatility and a -18.34% maximum drawdown. V1 returned more than both chosen static portfolios and had a smaller maximum drawdown, but higher volatility. At 20 bp, v1 returned 12.06% versus 11.52% for SPY/GLD/cash: the annualized return gap shrank to about 0.54 percentage points. This comparison does not establish that the dynamic rules outperform all static alternatives.
-
-The two new fixed portfolios retain a 40% SPY target and divide the rest equally between GLD/cash (30% each), or TLT/GLD/cash (20% each). They rebalance monthly. These weights were recorded in docs/static_benchmark_protocol.md before this extension was run; they were not selected through a search. This remains a retrospective exercise because the original final-test and attribution results had already been observed. Consult the cost sensitivity table and chart before interpreting the 5 bp comparison.
+At 5 bp, the SPY/GLD/cash static portfolio returned 11.57% annualized with 9.22% volatility and a -15.57% maximum drawdown. The four-asset static portfolio returned 9.39%, with 8.87% volatility and a -18.34% drawdown. At 20 bp, v1 returned 12.06% versus 11.52% for SPY/GLD/cash, a gap of 0.55 percentage points. The weights were documented before these benchmark runs, after the original final-test results had been observed. No weight search was performed; this remains a retrospective comparison.
 
 ## Scope and methods
 

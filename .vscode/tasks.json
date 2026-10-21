@@ -5,7 +5,22 @@
       "label": "Initial analysis: build visual report",
       "type": "process",
       "command": "${workspaceFolder}/.venv/bin/python",
-      "args": ["scripts/build_initial_analysis.py"],
+      "args": [
+        "scripts/build_initial_analysis.py"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Project: rebuild and review final report",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "args": [
+        "scripts/rebuild_project.py"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
       "group": "build",
       "problemMatcher": []
     }

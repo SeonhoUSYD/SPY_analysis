@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "review_date": "2026-10-22",
+  "unit_tests": 8,
+  "backtest_metrics_unchanged": true,
+  "processed_sha256": "0d386c47dfd4aa3eaff736086ab94cda93775df9d406808441adf2167cbb4f7a",
+  "verified_raw_files": 3,
+  "checks": [
+    "signal/execution timing",
+    "historical-prefix invariance",
+    "exact self-financing charges",
+    "daily and period P&L reconciliation",
+    "buy-and-hold closed form",
+    "monthly rebalance schedule",
+    "snapshot-drift rejection",
+    "invalid-input rejection"
+  ],
+  "limitations": [
+    "secondary ETF history not fully cross-validated",
+    "adjusted-close execution approximation",
+    "no additional execution-delay test",
+    "post-test benchmark selection",
+    "current FRED history, not a vintage archive"
+  ],
+  "source_sha256": {
+    "scripts/analyze_performance.py": "8697b161c911ed027beff5248274cd594f39499b47874a47711e65f505a5ca41",
+    "scripts/backtest_strategy_v1.py": "1dc7ffb2848ae22cecf91e864239a077a8a3eedf7b2073ae458fe599a8fe2b1f",
+    "scripts/build_backtest_report.py": "0568c32a53fd48df63e3ec22c470aefa1fc3c437c2e8448dd799e31eda668353",
+    "scripts/build_final_report.py": "78d194844abfbfaec61ea03d4146fdb47950161b61896f8ce6e25d27ea6a0704",
+    "scripts/build_initial_analysis.py": "bc2b72f201d659725c818906e266c022b821804583a5b5107e7d328a5bd77ff3",
+    "scripts/download_data.py": "bf81d2d366964c41407ad360c6ec4a7a03c82922008b4dcb3cb8ef65b94e3495",
+    "scripts/primary_analysis.py": "9bef472b4be9b8221d74ed9e30230e26cf5a93577fd24eb01a2c6d8d3c17a9ab",
+    "scripts/rebuild_project.py": "08d87240bd0f578c063de6bc9dbf7088cd5d6304000df8ea68fc2ba3846cf094",
+    "scripts/report_findings.py": "22c343cc8d3b87b956d0325cda36de8f25b5fb7cb235daab90fd004fc795de49"
+  }
+}

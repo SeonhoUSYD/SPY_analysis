@@ -1,4 +1,4 @@
-"""Development-only accounting check for the predeclared strategy v1."""
+"""Shared portfolio engine; command-line entry runs the development check."""
 
 from __future__ import annotations
 
@@ -42,11 +42,19 @@ def load(end: str = END_DEV) -> list[dict]:
                 row[asset] = float(raw[f"{asset}_adj_close"])
             row["vix"] = float(raw["vix_lag1"]) if raw["vix_lag1"] else None
             row["cash_rate"] = float(raw["dgs3mo_lag1"]) / 100 / 252 if raw["dgs3mo_lag1"] else 0.0
+            if any(not math.isfinite(row[a]) or row[a] <= 0 for a in ASSETS):
+                raise ValueError(f"Nonfinite or nonpositive price on {row['date']}")
+            if rows and row['date'] <= rows[-1]['date']:
+                raise ValueError("Input dates must be strictly increasing")
+            if not math.isfinite(row['cash_rate']) or (row['vix'] is not None and not math.isfinite(row['vix'])):
+                raise ValueError(f"Nonfinite macro input on {row['date']}")
             rows.append(row)
     return rows
 
 
 def signal(rows: list[dict], t: int) -> tuple[list[float], str, tuple[bool, bool]]:
+    if t < 252 or t >= len(rows):
+        raise ValueError("Signal requires 252 valid lagged VIX observations and a valid index")
     history = [row["vix"] for row in rows[t-251:t+1]]
     if any(value is None for value in history):
         raise ValueError("Missing VIX in signal history")
@@ -77,6 +85,13 @@ def signal(rows: list[dict], t: int) -> tuple[list[float], str, tuple[bool, bool
 
 
 def run(rows: list[dict], start: int, mode: str, cost_rate: float) -> dict:
+    allowed = {"v1", "dynamic_cash", "spy", "equal", "fixed40", "gold_cash", "balanced40"}
+    if mode not in allowed:
+        raise ValueError(f"Unknown strategy mode: {mode}")
+    if not math.isfinite(cost_rate) or not 0 <= cost_rate < 1:
+        raise ValueError("Cost rate must be finite and between zero and one")
+    if not 0 <= start < len(rows) - 2:
+        raise ValueError("At least two close-to-close intervals are required")
     value = 1.0
     weights = [0.0, 0.0, 0.0, 1.0]
     values = []
@@ -208,7 +223,7 @@ def main() -> None:
 
 Strategy v1 makes substantial allocation changes and is sensitive to transaction costs in this development sample. The next design question is whether fewer trades retain useful risk control. This table does not establish superiority. Data from 2016 onward are excluded from this calculation.
 
-Any rule changes after seeing this table are development-stage fitting. Record revisions separately from `docs/strategy_v1.md` and keep the final test sample reserved.
+Any rule changes after seeing this table are development-stage fitting. Record revisions separately from `docs/strategy_v1.md` and treat the already observed final-test sample as retrospective for future revisions.
 """
     OUTPUT.write_text(report, encoding="utf-8")
     print(f"start={checked['dates'][0]} end={checked['dates'][1]}")

@@ -182,7 +182,7 @@ def build_html(dev, panels):
 <p class="meta">2007-01-03 – 2015-12-31 · __COUNT__ trading sessions · SPY / TLT / GLD</p>
 <p class="note">Strategy questions begin with development-period observations. Zoom, pan, and hover to inspect each chart. Data from 2016 onward are excluded from these calculations.</p>
 <nav>__NAV__</nav></header>__SECTIONS__
-<footer><h2>From observation to experiment</h2><p>The proposed rules use VIX to adjust equity exposure, check recent TLT/GLD behavior, and gate rebalancing. These charts do not establish outperformance or optimal weights. Transaction costs and out-of-sample evaluation are the next checks.</p>
+<footer><h2>From observation to experiment</h2><p>The proposed rules use VIX to adjust equity exposure, check recent TLT/GLD behavior, and gate rebalancing. These charts do not establish outperformance or optimal weights. The completed cost scenarios, validation, and final test appear in the final report.</p>
 <p>Sources: <a href="https://github.com/manisahni/marketdata/tree/65a079329e379e104495f459e12e76a8f995585a">Pinned ETF adjusted-close mirror</a> · <a href="https://fred.stlouisfed.org/series/VIXCLS">FRED VIXCLS</a> · <a href="https://fred.stlouisfed.org/series/DGS3MO">FRED DGS3MO</a>.</p>
 <p>ETF data come from a secondary mirror of a Yahoo Finance cache. Calculations use simple returns and 252 sessions per year. Execution, costs, cash interest, and taxes are excluded from these asset-observation charts. Rebuild: <code>.venv/bin/python scripts/build_initial_analysis.py</code></p></footer></main></body></html>'''
     document = template.replace("__PLOTLY__", get_plotlyjs()).replace("__COUNT__", f"{len(dev):,}")
