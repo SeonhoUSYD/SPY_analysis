@@ -81,11 +81,15 @@ def run(rows: list[dict], start: int, mode: str, cost_rate: float) -> dict:
     weights = [0.0, 0.0, 0.0, 1.0]
     values = []
     weight_history = []
+    pnl_history = []
+    cost_history = []
     trades = 0
     turnover = 0.0
     total_cost = 0.0
     decisions = {"low": 0, "mid": 0, "high": 0}
-    pending = signal(rows, start - 1)[0] if mode == "v1" else None
+    pending = signal(rows, start - 1)[0] if mode in ("v1", "dynamic_cash") else None
+    if mode == "dynamic_cash":
+        pending = [pending[0], 0.0, 0.0, 1 - pending[0]]
 
     def rebalance(target: list[float]) -> None:
         nonlocal value, weights, trades, turnover, total_cost
@@ -108,28 +112,37 @@ def run(rows: list[dict], start: int, mode: str, cost_rate: float) -> dict:
         total_cost += charge
 
     for t in range(start, len(rows)):
+        daily_pnl = [0.0] * 4
+        costs_before = total_cost
         if t > start:
             relatives = [rows[t][a] / rows[t-1][a] for a in ASSETS]
             relatives.append(1 + rows[t-1]["cash_rate"])
+            daily_pnl = [value * weights[i] * (relatives[i] - 1) for i in range(4)]
             components = [weights[i] * relatives[i] for i in range(4)]
             growth = sum(components)
             value *= growth
             weights = [component / growth for component in components]
-        if mode == "v1":
+        if mode in ("v1", "dynamic_cash"):
             if pending is not None:
                 rebalance(pending)
                 pending = None
             if rows[t]["day"].weekday() == 4 and t < len(rows) - 1:
                 target, regime, _ = signal(rows, t)
+                if mode == "dynamic_cash":
+                    target = [target[0], 0.0, 0.0, 1 - target[0]]
                 decisions[regime] += 1
                 if sum(abs(target[i] - weights[i]) for i in range(3)) >= .10:
                     pending = target
+        elif mode == "fixed40" and (t == start or rows[t]["date"][:7] != rows[t-1]["date"][:7]):
+            rebalance([.4, 0.0, 0.0, .6])
         elif mode == "spy" and t == start:
             rebalance([1.0, 0.0, 0.0, 0.0])
         elif mode == "equal" and (t == start or rows[t]["date"][:7] != rows[t-1]["date"][:7]):
             rebalance([1/3, 1/3, 1/3, 0.0])
         values.append(value)
         weight_history.append(weights[:])
+        pnl_history.append(daily_pnl)
+        cost_history.append(total_cost - costs_before)
         assert abs(sum(weights) - 1) < 1e-8 and value > 0
 
     daily = [values[i] / values[i-1] - 1 for i in range(1, len(values))]
@@ -139,6 +152,8 @@ def run(rows: list[dict], start: int, mode: str, cost_rate: float) -> dict:
         high_water = max(high_water, wealth)
         worst_drawdown = min(worst_drawdown, wealth / high_water - 1)
     return {
+        "pnl": pnl_history,
+        "costs": cost_history,
         "values": values,
         "weights": weight_history,
         "final": values[-1],

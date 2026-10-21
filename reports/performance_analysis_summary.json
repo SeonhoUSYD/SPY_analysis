@@ -1,0 +1,258 @@
+{
+  "comparison": [
+    {
+      "strategy": "Strategy v1",
+      "cagr": 0.1400050482620745,
+      "volatility": 0.10512346204289624,
+      "max_drawdown": -0.1331685610538187,
+      "trades": 159,
+      "mean_spy_weight": 0.4014277853829773
+    },
+    {
+      "strategy": "SPY buy-and-hold",
+      "cagr": 0.14148275981629688,
+      "volatility": 0.1945952730314663,
+      "max_drawdown": -0.3371727431876226,
+      "trades": 1,
+      "mean_spy_weight": 1.0
+    },
+    {
+      "strategy": "Monthly SPY 40% / cash 60%",
+      "cagr": 0.07523128574722171,
+      "volatility": 0.07585604771251021,
+      "max_drawdown": -0.14092415826133486,
+      "trades": 96,
+      "mean_spy_weight": 0.40121652083747233
+    },
+    {
+      "strategy": "VIX equity rule / cash only",
+      "cagr": 0.07737183114365287,
+      "volatility": 0.06044736674888899,
+      "max_drawdown": -0.07050475481815843,
+      "trades": 111,
+      "mean_spy_weight": 0.401702768577158
+    }
+  ],
+  "attribution": [
+    {
+      "period": "2018\u20132025",
+      "strategy": "Strategy v1",
+      "return": 1.8438014606449067,
+      "within_period_drawdown": -0.1331685610538187,
+      "SPY": 0.8164638935742221,
+      "TLT": -0.06537407399185724,
+      "GLD": 1.1309677443034862,
+      "Cash": 0.033103612607653106,
+      "Costs": -0.07135971584859557
+    },
+    {
+      "period": "2018\u20132025",
+      "strategy": "SPY buy-and-hold",
+      "return": 1.8733367972970125,
+      "within_period_drawdown": -0.3371727431876226,
+      "SPY": 1.8738365474219538,
+      "TLT": 0.0,
+      "GLD": 0.0,
+      "Cash": 0.0,
+      "Costs": -0.0004997501249375258
+    },
+    {
+      "period": "2018\u20132025",
+      "strategy": "Monthly SPY 40% / cash 60%",
+      "return": 0.7834670686491534,
+      "within_period_drawdown": -0.14092415826133486,
+      "SPY": 0.6079362259645147,
+      "TLT": 0.0,
+      "GLD": 0.0,
+      "Cash": 0.17630971260172595,
+      "Costs": -0.0007788699170834246
+    },
+    {
+      "period": "2018\u20132025",
+      "strategy": "VIX equity rule / cash only",
+      "return": 0.811983842701453,
+      "within_period_drawdown": -0.07050475481815843,
+      "SPY": 0.6595225662338897,
+      "TLT": 0.0,
+      "GLD": 0.0,
+      "Cash": 0.1728335153688015,
+      "Costs": -0.020372238901230966
+    },
+    {
+      "period": "2020",
+      "strategy": "Strategy v1",
+      "return": 0.24036410043755874,
+      "within_period_drawdown": -0.1331685610538187,
+      "SPY": 0.10037654435380455,
+      "TLT": 0.01603741544132382,
+      "GLD": 0.1307855791128459,
+      "Cash": 9.77541496712656e-05,
+      "Costs": -0.00693319262008588
+    },
+    {
+      "period": "2020",
+      "strategy": "SPY buy-and-hold",
+      "return": 0.183316505359705,
+      "within_period_drawdown": -0.3371727431876226,
+      "SPY": 0.1833165053597045,
+      "TLT": 0.0,
+      "GLD": 0.0,
+      "Cash": 0.0,
+      "Costs": -0.0
+    },
+    {
+      "period": "2020",
+      "strategy": "Monthly SPY 40% / cash 60%",
+      "return": 0.0847411500132409,
+      "within_period_drawdown": -0.14092415826133486,
+      "SPY": 0.08260836647743804,
+      "TLT": 0.0,
+      "GLD": 0.0,
+      "Cash": 0.0022328901050728935,
+      "Costs": -0.00010010656926752226
+    },
+    {
+      "period": "2020",
+      "strategy": "VIX equity rule / cash only",
+      "return": 0.06826825914848622,
+      "within_period_drawdown": -0.06359882267767991,
+      "SPY": 0.06713382933492823,
+      "TLT": 0.0,
+      "GLD": 0.0,
+      "Cash": 0.002151748961562794,
+      "Costs": -0.0010173191480043644
+    },
+    {
+      "period": "2022",
+      "strategy": "Strategy v1",
+      "return": -0.07700668488711837,
+      "within_period_drawdown": -0.1299162648894796,
+      "SPY": -0.06975123972441544,
+      "TLT": -0.014960991571140987,
+      "GLD": 0.0032347417795886577,
+      "Cash": 0.009485170201373256,
+      "Costs": -0.0050143655725240115
+    },
+    {
+      "period": "2022",
+      "strategy": "SPY buy-and-hold",
+      "return": -0.18175368136821113,
+      "within_period_drawdown": -0.24496400725761602,
+      "SPY": -0.1817536813682114,
+      "TLT": 0.0,
+      "GLD": 0.0,
+      "Cash": 0.0,
+      "Costs": -0.0
+    },
+    {
+      "period": "2022",
+      "strategy": "Monthly SPY 40% / cash 60%",
+      "return": -0.06084085515440674,
+      "within_period_drawdown": -0.09652550746005195,
+      "SPY": -0.07239889817739317,
+      "TLT": 0.0,
+      "GLD": 0.0,
+      "Cash": 0.011635667157156094,
+      "Costs": -7.7624134170249e-05
+    },
+    {
+      "period": "2022",
+      "strategy": "VIX equity rule / cash only",
+      "return": -0.059170879825055755,
+      "within_period_drawdown": -0.07050475481815843,
+      "SPY": -0.07069639036412087,
+      "TLT": 0.0,
+      "GLD": 0.0,
+      "Cash": 0.012832334623070195,
+      "Costs": -0.0013068240840029951
+    },
+    {
+      "period": "2020 v1 drawdown window 2020-03-09 to 2020-03-18",
+      "strategy": "Strategy v1",
+      "return": -0.1331685610538187,
+      "within_period_drawdown": -0.1331685610538187,
+      "SPY": -0.015275757790987974,
+      "TLT": -0.07320482658216226,
+      "GLD": -0.04468797668066835,
+      "Cash": 0.0,
+      "Costs": -0.0
+    },
+    {
+      "period": "2020 v1 drawdown window 2020-03-09 to 2020-03-18",
+      "strategy": "SPY buy-and-hold",
+      "return": -0.12482218826568281,
+      "within_period_drawdown": -0.16840019458168087,
+      "SPY": -0.12482218826568299,
+      "TLT": 0.0,
+      "GLD": 0.0,
+      "Cash": 0.0,
+      "Costs": -0.0
+    },
+    {
+      "period": "2020 v1 drawdown window 2020-03-09 to 2020-03-18",
+      "strategy": "Monthly SPY 40% / cash 60%",
+      "return": -0.04632306340220538,
+      "within_period_drawdown": -0.06453770879380027,
+      "SPY": -0.04638515694123389,
+      "TLT": 0.0,
+      "GLD": 0.0,
+      "Cash": 6.209353902880034e-05,
+      "Costs": -0.0
+    },
+    {
+      "period": "2020 v1 drawdown window 2020-03-09 to 2020-03-18",
+      "strategy": "VIX equity rule / cash only",
+      "return": -0.01619725914390857,
+      "within_period_drawdown": -0.02289734136940491,
+      "SPY": -0.01628318247474403,
+      "TLT": 0.0,
+      "GLD": 0.0,
+      "Cash": 8.592333083526719e-05,
+      "Costs": -0.0
+    },
+    {
+      "period": "2022 v1 drawdown window 2022-03-08 to 2022-11-03",
+      "strategy": "Strategy v1",
+      "return": -0.1299162648894796,
+      "within_period_drawdown": -0.1299162648894796,
+      "SPY": -0.03941149924074062,
+      "TLT": 0.0,
+      "GLD": -0.0970985577622227,
+      "Cash": 0.007984228618547971,
+      "Costs": -0.001390436505064912
+    },
+    {
+      "period": "2022 v1 drawdown window 2022-03-08 to 2022-11-03",
+      "strategy": "SPY buy-and-hold",
+      "return": -0.09836490786305796,
+      "within_period_drawdown": -0.22094855188243212,
+      "SPY": -0.09836490786305767,
+      "TLT": 0.0,
+      "GLD": 0.0,
+      "Cash": 0.0,
+      "Costs": -0.0
+    },
+    {
+      "period": "2022 v1 drawdown window 2022-03-08 to 2022-11-03",
+      "strategy": "Monthly SPY 40% / cash 60%",
+      "return": -0.02929531193380086,
+      "within_period_drawdown": -0.0867045429103318,
+      "SPY": -0.03721316354311557,
+      "TLT": 0.0,
+      "GLD": 0.0,
+      "Cash": 0.007972183728214554,
+      "Costs": -5.433211890035756e-05
+    },
+    {
+      "period": "2022 v1 drawdown window 2022-03-08 to 2022-11-03",
+      "strategy": "VIX equity rule / cash only",
+      "return": -0.03425697437110564,
+      "within_period_drawdown": -0.055747783323667255,
+      "SPY": -0.04335530339865554,
+      "TLT": 0.0,
+      "GLD": 0.0,
+      "Cash": 0.009958263665056855,
+      "Costs": -0.000859934637506166
+    }
+  ]
+}

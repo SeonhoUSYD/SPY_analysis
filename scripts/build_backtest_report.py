@@ -34,6 +34,8 @@ for period, sample, start in [('Development', short, first), ('Validation', vali
     for bps in (0, 5, 20):
         for mode, name in MODES.items():
             result = run(sample, start, mode, bps / 10000)
+            result.pop('pnl')
+            result.pop('costs')
             values = result.pop('values')
             weights = result.pop('weights')
             result.update(period=period, strategy=name, bps=bps)
