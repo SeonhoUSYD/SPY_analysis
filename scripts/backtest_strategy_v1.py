@@ -31,11 +31,11 @@ def correlation(xs: list[float], ys: list[float]) -> float:
     return numerator / denominator
 
 
-def load() -> list[dict]:
+def load(end: str = END_DEV) -> list[dict]:
     rows = []
     with DATA.open(newline="", encoding="utf-8") as stream:
         for raw in csv.DictReader(stream):
-            if raw["date"] > END_DEV:
+            if raw["date"] > end:
                 break
             row = {"date": raw["date"], "day": date.fromisoformat(raw["date"])}
             for asset in ASSETS:
@@ -80,6 +80,7 @@ def run(rows: list[dict], start: int, mode: str, cost_rate: float) -> dict:
     value = 1.0
     weights = [0.0, 0.0, 0.0, 1.0]
     values = []
+    weight_history = []
     trades = 0
     turnover = 0.0
     total_cost = 0.0
@@ -91,8 +92,14 @@ def run(rows: list[dict], start: int, mode: str, cost_rate: float) -> dict:
         changed = sum(abs(target[i] - weights[i]) for i in range(3))
         if changed < 1e-12:
             return
-        charge = value * changed * cost_rate
-        value -= charge
+        # Solve costs against post-cost target holdings rather than pre-cost weights.
+        before = value
+        after = before
+        for _ in range(30):
+            traded = sum(abs(after * target[i] - before * weights[i]) for i in range(3))
+            after = before - traded * cost_rate
+        charge = before - after
+        value = after
         if value <= 0:
             raise ValueError("Transaction costs exhausted the portfolio")
         weights = target[:]
@@ -122,6 +129,7 @@ def run(rows: list[dict], start: int, mode: str, cost_rate: float) -> dict:
         elif mode == "equal" and (t == start or rows[t]["date"][:7] != rows[t-1]["date"][:7]):
             rebalance([1/3, 1/3, 1/3, 0.0])
         values.append(value)
+        weight_history.append(weights[:])
         assert abs(sum(weights) - 1) < 1e-8 and value > 0
 
     daily = [values[i] / values[i-1] - 1 for i in range(1, len(values))]
@@ -131,8 +139,10 @@ def run(rows: list[dict], start: int, mode: str, cost_rate: float) -> dict:
         high_water = max(high_water, wealth)
         worst_drawdown = min(worst_drawdown, wealth / high_water - 1)
     return {
+        "values": values,
+        "weights": weight_history,
         "final": values[-1],
-        "cagr": values[-1] ** (252 / len(values)) - 1,
+        "cagr": values[-1] ** (252 / max(1, len(values) - 1)) - 1,
         "volatility": stats.stdev(daily) * math.sqrt(252),
         "max_drawdown": worst_drawdown,
         "trades": trades,

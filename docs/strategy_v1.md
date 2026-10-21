@@ -39,3 +39,7 @@ Use 2007-2015 for development and accounting checks, 2016-2017 for validation, a
 ## Development finding
 
 The initial development-only run produced substantial allocation changes and was sensitive to costs. This motivates testing whether a lower-trading variant retains risk control. It does not establish a successful investment strategy. See [the development check](../reports/strategy_v1_dev_check.md).
+
+## Frozen validation run
+
+The unchanged allocation rules were evaluated on 2016–2017 after the development accounting check. See [the full backtest protocol and results](../reports/backtest_v1.md). Each evaluation period resets capital, so its initial close allocation uses the preceding session signal as an explicitly documented boundary exception. Transaction charges are solved against post-cost target holdings. The 2018–2025 final test remains reserved.

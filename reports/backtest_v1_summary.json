@@ -1,0 +1,380 @@
+[
+  {
+    "final": 1.769365999264158,
+    "cagr": 0.07412352667780198,
+    "volatility": 0.10662745736908415,
+    "max_drawdown": -0.1961228168742426,
+    "trades": 181,
+    "turnover": 99.43448316428304,
+    "cost_fraction_initial": 0.0,
+    "decisions": {
+      "low": 173,
+      "mid": 103,
+      "high": 124
+    },
+    "dates": [
+      "2008-01-07",
+      "2015-12-31"
+    ],
+    "period": "Development",
+    "strategy": "Strategy v1",
+    "bps": 0
+  },
+  {
+    "final": 1.7090728837989697,
+    "cagr": 0.06946706024874572,
+    "volatility": 0.22140893679517334,
+    "max_drawdown": -0.5148145915328496,
+    "trades": 1,
+    "turnover": 1.0,
+    "cost_fraction_initial": 0.0,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2008-01-07",
+      "2015-12-31"
+    ],
+    "period": "Development",
+    "strategy": "SPY buy-and-hold",
+    "bps": 0
+  },
+  {
+    "final": 1.6573334383391793,
+    "cagr": 0.06535519295687142,
+    "volatility": 0.09975990247724711,
+    "max_drawdown": -0.2012589311591051,
+    "trades": 96,
+    "turnover": 4.342542876902064,
+    "cost_fraction_initial": 0.0,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2008-01-07",
+      "2015-12-31"
+    ],
+    "period": "Development",
+    "strategy": "Monthly equal weight",
+    "bps": 0
+  },
+  {
+    "final": 1.683546060577397,
+    "cagr": 0.06745219346449383,
+    "volatility": 0.10665143992184728,
+    "max_drawdown": -0.19873717754836662,
+    "trades": 181,
+    "turnover": 99.43448316428304,
+    "cost_fraction_initial": 0.07422913960789823,
+    "decisions": {
+      "low": 173,
+      "mid": 103,
+      "high": 124
+    },
+    "dates": [
+      "2008-01-07",
+      "2015-12-31"
+    ],
+    "period": "Development",
+    "strategy": "Strategy v1",
+    "bps": 5
+  },
+  {
+    "final": 1.7082187744117632,
+    "cagr": 0.06940007121179614,
+    "volatility": 0.22140893679517332,
+    "max_drawdown": -0.5148145915328488,
+    "trades": 1,
+    "turnover": 1.0,
+    "cost_fraction_initial": 0.0004997501249375258,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2008-01-07",
+      "2015-12-31"
+    ],
+    "period": "Development",
+    "strategy": "SPY buy-and-hold",
+    "bps": 5
+  },
+  {
+    "final": 1.6537389897074863,
+    "cagr": 0.06506538014130858,
+    "volatility": 0.09976089988923195,
+    "max_drawdown": -0.20140527946309794,
+    "trades": 96,
+    "turnover": 4.342542876902064,
+    "cost_fraction_initial": 0.0026983722941213983,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2008-01-07",
+      "2015-12-31"
+    ],
+    "period": "Development",
+    "strategy": "Monthly equal weight",
+    "bps": 5
+  },
+  {
+    "final": 1.4502334028239074,
+    "cagr": 0.047683034725019,
+    "volatility": 0.10682649022055025,
+    "max_drawdown": -0.20652954485982977,
+    "trades": 181,
+    "turnover": 99.43448316428304,
+    "cost_fraction_initial": 0.2736194918544258,
+    "decisions": {
+      "low": 173,
+      "mid": 103,
+      "high": 124
+    },
+    "dates": [
+      "2008-01-07",
+      "2015-12-31"
+    ],
+    "period": "Development",
+    "strategy": "Strategy v1",
+    "bps": 20
+  },
+  {
+    "final": 1.7056615606776175,
+    "cagr": 0.06919932991503419,
+    "volatility": 0.22140893679517334,
+    "max_drawdown": -0.5148145915328486,
+    "trades": 1,
+    "turnover": 1.0,
+    "cost_fraction_initial": 0.001996007984031989,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2008-01-07",
+      "2015-12-31"
+    ],
+    "period": "Development",
+    "strategy": "SPY buy-and-hold",
+    "bps": 20
+  },
+  {
+    "final": 1.6430043494856177,
+    "cagr": 0.06419657690170477,
+    "volatility": 0.09976419078390472,
+    "max_drawdown": -0.2018442627403012,
+    "trades": 96,
+    "turnover": 4.342542876902064,
+    "cost_fraction_initial": 0.010753010580967448,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2008-01-07",
+      "2015-12-31"
+    ],
+    "period": "Development",
+    "strategy": "Monthly equal weight",
+    "bps": 20
+  },
+  {
+    "final": 1.3307710826809145,
+    "cagr": 0.154247374697696,
+    "volatility": 0.0662369381798648,
+    "max_drawdown": -0.03377445696035353,
+    "trades": 62,
+    "turnover": 33.36037174790616,
+    "cost_fraction_initial": 0.0,
+    "decisions": {
+      "low": 64,
+      "mid": 22,
+      "high": 15
+    },
+    "dates": [
+      "2016-01-04",
+      "2017-12-29"
+    ],
+    "period": "Validation",
+    "strategy": "Strategy v1",
+    "bps": 0
+  },
+  {
+    "final": 1.3824003088376906,
+    "cagr": 0.17651388806114943,
+    "volatility": 0.10351177292688578,
+    "max_drawdown": -0.09187548626882591,
+    "trades": 1,
+    "turnover": 1.0,
+    "cost_fraction_initial": 0.0,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2016-01-04",
+      "2017-12-29"
+    ],
+    "period": "Validation",
+    "strategy": "SPY buy-and-hold",
+    "bps": 0
+  },
+  {
+    "final": 1.2305512102227754,
+    "cagr": 0.10976066507486215,
+    "volatility": 0.06674168942864528,
+    "max_drawdown": -0.0980383727265115,
+    "trades": 24,
+    "turnover": 1.4471613910915517,
+    "cost_fraction_initial": 0.0,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2016-01-04",
+      "2017-12-29"
+    ],
+    "period": "Validation",
+    "strategy": "Monthly equal weight",
+    "bps": 0
+  },
+  {
+    "final": 1.3087572613308793,
+    "cagr": 0.1446226595993041,
+    "volatility": 0.06614465459986571,
+    "max_drawdown": -0.03495966483658486,
+    "trades": 62,
+    "turnover": 33.36037174790616,
+    "cost_fraction_initial": 0.0198899819901851,
+    "decisions": {
+      "low": 64,
+      "mid": 22,
+      "high": 15
+    },
+    "dates": [
+      "2016-01-04",
+      "2017-12-29"
+    ],
+    "period": "Validation",
+    "strategy": "Strategy v1",
+    "bps": 5
+  },
+  {
+    "final": 1.3817094541106383,
+    "cagr": 0.17621869860100903,
+    "volatility": 0.10351177292688576,
+    "max_drawdown": -0.0918754862688258,
+    "trades": 1,
+    "turnover": 1.0,
+    "cost_fraction_initial": 0.0004997501249375258,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2016-01-04",
+      "2017-12-29"
+    ],
+    "period": "Validation",
+    "strategy": "SPY buy-and-hold",
+    "bps": 5
+  },
+  {
+    "final": 1.2296612879695665,
+    "cagr": 0.10935770988497073,
+    "volatility": 0.06674193477905939,
+    "max_drawdown": -0.0980867509256741,
+    "trades": 24,
+    "turnover": 1.4471613910915517,
+    "cost_fraction_initial": 0.0007487820765321729,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2016-01-04",
+      "2017-12-29"
+    ],
+    "period": "Validation",
+    "strategy": "Monthly equal weight",
+    "bps": 5
+  },
+  {
+    "final": 1.2448719406111723,
+    "cagr": 0.11622521917046313,
+    "volatility": 0.06609094917833533,
+    "max_drawdown": -0.038508276256219665,
+    "trades": 62,
+    "turnover": 33.36037174790616,
+    "cost_fraction_initial": 0.07752926360225565,
+    "decisions": {
+      "low": 64,
+      "mid": 22,
+      "high": 15
+    },
+    "dates": [
+      "2016-01-04",
+      "2017-12-29"
+    ],
+    "period": "Validation",
+    "strategy": "Strategy v1",
+    "bps": 20
+  },
+  {
+    "final": 1.379641026784123,
+    "cagr": 0.1753344580674352,
+    "volatility": 0.10351177292688576,
+    "max_drawdown": -0.09215505200552787,
+    "trades": 1,
+    "turnover": 1.0,
+    "cost_fraction_initial": 0.001996007984031989,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2016-01-04",
+      "2017-12-29"
+    ],
+    "period": "Validation",
+    "strategy": "SPY buy-and-hold",
+    "bps": 20
+  },
+  {
+    "final": 1.2269972793360717,
+    "cagr": 0.10815058270084865,
+    "volatility": 0.06674280226795345,
+    "max_drawdown": -0.09823183596538776,
+    "trades": 24,
+    "turnover": 1.4471613910915517,
+    "cost_fraction_initial": 0.0029902502698804234,
+    "decisions": {
+      "low": 0,
+      "mid": 0,
+      "high": 0
+    },
+    "dates": [
+      "2016-01-04",
+      "2017-12-29"
+    ],
+    "period": "Validation",
+    "strategy": "Monthly equal weight",
+    "bps": 20
+  }
+]
